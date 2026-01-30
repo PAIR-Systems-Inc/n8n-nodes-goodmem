@@ -638,6 +638,45 @@ export class Goodmem implements INodeType {
 					},
 				},
 			},
+			{
+				displayName: 'Metadata',
+				name: 'optionalMetadata',
+				type: 'fixedCollection',
+				typeOptions: { multipleValues: true },
+				placeholder: 'Add Metadata',
+				default: {},
+				displayOptions: {
+					show: {
+						resource: ['memory'],
+						operation: ['create'],
+					},
+				},
+				description: '(Optional) Memory Metadata',
+				options: [
+				{
+					displayName: 'Metadata',
+					name: 'metadata',
+					values: [
+						{
+							displayName: 'Key',
+							name: 'key',
+							type: 'string',
+							default: '',
+							placeholder: 'e.g. environment',
+							description: 'Metadata key',
+						},
+						{
+							displayName: 'Value',
+							name: 'value',
+							type: 'string',
+							default: '',
+							placeholder: 'e.g. production',
+							description: 'Metadata value',
+						}
+					]
+				},
+			]
+		}
 			// ...issueDescription,
 			// ...issueCommentDescription,
 		],
