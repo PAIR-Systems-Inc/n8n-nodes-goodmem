@@ -91,21 +91,6 @@ class Goodmem {
                             value: 'delete',
                             description: 'Delete an existing space in Goodmem'
                         },
-                        {
-                            name: 'Get',
-                            value: 'get',
-                            description: 'Get details about an existing space in Goodmem'
-                        },
-                        {
-                            name: 'List',
-                            value: 'list',
-                            description: 'List available spaces in Goodmem'
-                        },
-                        {
-                            name: 'List Memories',
-                            value: 'listMemories',
-                            description: 'List memories in a space in Goodmem'
-                        },
                     ],
                     default: 'create',
                 },
@@ -144,137 +129,6 @@ class Goodmem {
                     default: 'create',
                 },
                 {
-                    displayName: 'Operation',
-                    name: 'operation',
-                    type: 'options',
-                    noDataExpression: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['llm'],
-                        },
-                    },
-                    options: [
-                        {
-                            name: 'Create',
-                            value: 'create',
-                            description: 'Create a llm for use in Goodmem',
-                        },
-                        {
-                            name: 'Delete',
-                            value: 'delete',
-                            description: 'Delete an existing llm in Goodmem'
-                        },
-                        {
-                            name: 'Get',
-                            value: 'get',
-                            description: 'Get a llm by its id in Goodmem'
-                        },
-                        {
-                            name: 'List',
-                            value: 'list',
-                            description: 'List a llm by its id in Goodmem'
-                        },
-                    ],
-                    default: 'create',
-                },
-                {
-                    displayName: 'Operation',
-                    name: 'operation',
-                    type: 'options',
-                    noDataExpression: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['embedder'],
-                        },
-                    },
-                    options: [
-                        {
-                            name: 'Create',
-                            value: 'create',
-                            description: 'Create an embedder for use in Goodmem',
-                        },
-                        {
-                            name: 'Delete',
-                            value: 'delete',
-                            description: 'Delete an existing embedder in Goodmem'
-                        },
-                        {
-                            name: 'Get',
-                            value: 'get',
-                            description: 'Get an embedder by its id in Goodmem'
-                        },
-                        {
-                            name: 'List',
-                            value: 'list',
-                            description: 'List an embedder by its id in Goodmem'
-                        },
-                    ],
-                    default: 'create',
-                },
-                {
-                    displayName: 'Operation',
-                    name: 'operation',
-                    type: 'options',
-                    noDataExpression: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['reranker'],
-                        },
-                    },
-                    options: [
-                        {
-                            name: 'Create',
-                            value: 'create',
-                            description: 'Create a reranker for use in Goodmem',
-                        },
-                        {
-                            name: 'Delete',
-                            value: 'delete',
-                            description: 'Delete an existing reranker in Goodmem'
-                        },
-                        {
-                            name: 'Get',
-                            value: 'get',
-                            description: 'Get a reranker by its id in Goodmem'
-                        },
-                        {
-                            name: 'List',
-                            value: 'list',
-                            description: 'List a reranker by its id in Goodmem'
-                        },
-                    ],
-                    default: 'create',
-                },
-                {
-                    displayName: 'Operation',
-                    name: 'operation',
-                    type: 'options',
-                    noDataExpression: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['apikey'],
-                        },
-                    },
-                    options: [
-                        {
-                            name: 'Create',
-                            value: 'create',
-                            description: 'Create an apikey for use in Goodmem',
-                        },
-                        {
-                            name: 'Delete',
-                            value: 'delete',
-                            description: 'Delete an existing apikey in Goodmem'
-                        },
-                        {
-                            name: 'List',
-                            value: 'list',
-                            description: 'List an apikey by its id in Goodmem'
-                        },
-                    ],
-                    default: 'create',
-                },
-                {
                     displayName: 'Space ID',
                     name: 'requiredSpaceId',
                     type: 'string',
@@ -282,10 +136,10 @@ class Goodmem {
                     required: true,
                     displayOptions: {
                         show: {
-                            resource: ['space', 'memory'],
+                            resource: ['space'],
                         },
                         hide: {
-                            operation: ['create', 'list', 'retrieve'],
+                            operation: ['create'],
                         },
                     },
                     placeholder: '',
@@ -300,7 +154,7 @@ class Goodmem {
                     displayOptions: {
                         show: {
                             resource: ['space'],
-                            operation: ['create', 'retrieve'],
+                            operation: ['create'],
                         },
                     },
                     placeholder: '',
@@ -315,7 +169,7 @@ class Goodmem {
                     displayOptions: {
                         show: {
                             resource: ['space'],
-                            operation: ['create', 'list'],
+                            operation: ['create'],
                         },
                     },
                     placeholder: '',
@@ -369,7 +223,7 @@ class Goodmem {
                     displayOptions: {
                         show: {
                             resource: ['space'],
-                            operation: ['create', 'list'],
+                            operation: ['create'],
                         },
                     },
                     placeholder: '',
@@ -385,7 +239,7 @@ class Goodmem {
                     displayOptions: {
                         show: {
                             resource: ['space'],
-                            operation: ['create', 'list'],
+                            operation: ['create'],
                         },
                     },
                     description: '(Optional) Space Labels',
@@ -439,7 +293,7 @@ class Goodmem {
                     ],
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                         },
                     },
@@ -454,7 +308,7 @@ class Goodmem {
                     required: true,
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             optionalChunkingStrategy: ['other'],
                         },
@@ -479,9 +333,9 @@ class Goodmem {
                     ],
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
-                            optionalChunkingStrategy: ['recursive', 'sentence', 'other']
+                            optionalChunkingStrategy: ['recursive', 'sentence']
                         },
                     },
                 },
@@ -497,7 +351,7 @@ class Goodmem {
                     required: true,
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['recursive']
@@ -518,7 +372,7 @@ class Goodmem {
                     required: true,
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['sentence']
@@ -539,7 +393,7 @@ class Goodmem {
                     required: true,
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['sentence']
@@ -560,7 +414,7 @@ class Goodmem {
                     required: true,
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['recursive']
@@ -586,7 +440,7 @@ class Goodmem {
                     ],
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['recursive']
@@ -610,7 +464,7 @@ class Goodmem {
                     ],
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['recursive']
@@ -631,10 +485,11 @@ class Goodmem {
                     required: false,
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             optionalChunkingStrategy: ['recursive'],
                             chunkingOptionToggle: ['custom'],
+                            chunkingSeparatorOptionToggle: ['custom']
                         },
                     },
                     placeholder: 'Enter chunking separator',
@@ -662,7 +517,7 @@ class Goodmem {
                     ],
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                             optionalChunkingStrategy: ['recursive'],
@@ -690,13 +545,30 @@ class Goodmem {
                     ],
                     displayOptions: {
                         show: {
-                            resource: ['space'],
+                            resource: ['space', 'memory'],
                             operation: ['create'],
                             chunkingOptionToggle: ['custom'],
                         },
                     },
                     placeholder: 'Enter Length measurement unit',
                     description: 'Length measurement unit',
+                },
+                {
+                    displayName: 'Space ID',
+                    name: 'requiredSpaceIdForMemory',
+                    type: 'string',
+                    default: '',
+                    required: true,
+                    displayOptions: {
+                        show: {
+                            resource: ['memory'],
+                        },
+                        hide: {
+                            operation: ['retrieve'],
+                        },
+                    },
+                    placeholder: '',
+                    description: '(Required) Space ID',
                 },
                 {
                     displayName: 'Memory Id',
@@ -729,124 +601,16 @@ class Goodmem {
                     description: '(Optional) Memory ID',
                 },
                 {
-                    displayName: 'Reranker Id',
-                    name: 'rerankerIdRequired',
+                    displayName: 'Content type',
+                    name: 'contentTypeForMemory',
                     type: 'string',
-                    default: '',
-                    required: true,
+                    default: 'text/plain',
                     displayOptions: {
                         show: {
-                            resource: ['reranker'],
-                            operation: ['delete', 'get'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Required) Reranker ID',
-                },
-                {
-                    displayName: 'Reranker Id',
-                    name: 'rerankerIdOptional',
-                    type: 'string',
-                    default: '',
-                    required: false,
-                    displayOptions: {
-                        show: {
-                            resource: ['reranker'],
+                            resource: ['memory'],
                             operation: ['create'],
                         },
                     },
-                    placeholder: '',
-                    description: '(Optional) Reranker ID',
-                },
-                {
-                    displayName: 'Llm Id',
-                    name: 'llmIdRequired',
-                    type: 'string',
-                    default: '',
-                    required: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['llm'],
-                            operation: ['delete', 'get'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Required) Llm ID',
-                },
-                {
-                    displayName: 'Memory Id',
-                    name: 'llmIdOptional',
-                    type: 'string',
-                    default: '',
-                    required: false,
-                    displayOptions: {
-                        show: {
-                            resource: ['llm'],
-                            operation: ['create'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Optional) Llm ID',
-                },
-                {
-                    displayName: 'Embedder Id',
-                    name: 'embedderIdRequired',
-                    type: 'string',
-                    default: '',
-                    required: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['embedder'],
-                            operation: ['delete', 'get'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Required) Embedder ID',
-                },
-                {
-                    displayName: 'Embedder Id',
-                    name: 'embedderIdOptional',
-                    type: 'string',
-                    default: '',
-                    required: false,
-                    displayOptions: {
-                        show: {
-                            resource: ['embedder'],
-                            operation: ['create'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Optional) Embedder ID',
-                },
-                {
-                    displayName: 'Api Key Id',
-                    name: 'apiKeyIdRequired',
-                    type: 'string',
-                    default: '',
-                    required: true,
-                    displayOptions: {
-                        show: {
-                            resource: ['apikey'],
-                            operation: ['delete'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Required) Api Key ID',
-                },
-                {
-                    displayName: 'Api Key Id',
-                    name: 'apiKeyIdOptional',
-                    type: 'string',
-                    default: '',
-                    required: false,
-                    displayOptions: {
-                        show: {
-                            resource: ['apikey'],
-                            operation: ['create'],
-                        },
-                    },
-                    placeholder: '',
-                    description: '(Optional) Api Key ID',
                 },
             ],
         };

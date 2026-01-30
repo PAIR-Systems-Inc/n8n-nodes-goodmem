@@ -99,21 +99,6 @@ export class Goodmem implements INodeType {
 						value: 'delete',
 						description: 'Delete an existing space in Goodmem'
 					},
-					{
-						name: 'Get',
-						value: 'get',
-						description: 'Get details about an existing space in Goodmem'
-					},
-					{
-						name: 'List',
-						value: 'list',
-						description: 'List available spaces in Goodmem'
-					},
-					{
-						name: 'List Memories',
-						value: 'listMemories',
-						description: 'List memories in a space in Goodmem'
-					},
 				],
 				default: 'create',
 			},
@@ -160,159 +145,6 @@ export class Goodmem implements INodeType {
 
 			/*
 			 * ============================================
-			 *            LLM OPERATIONS
-			 * ============================================
-			 */
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['llm'],
-					},
-				},
-				options: [ //todo: add llm update
-					{
-						name: 'Create',
-						value: 'create',
-						description: 'Create a llm for use in Goodmem',
-					},
-					{
-						name: 'Delete',
-						value: 'delete',
-						description: 'Delete an existing llm in Goodmem'
-					},
-					{
-						name: 'Get',
-						value: 'get',
-						description: 'Get a llm by its id in Goodmem'
-					},
-					{
-						name: 'List',
-						value: 'list',
-						description: 'List a llm by its id in Goodmem'
-					},
-				],
-				default: 'create',
-			},
-			/*
-			 * ============================================
-			 *            EMBEDDER OPERATIONS
-			 * ============================================
-			 */
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['embedder'],
-					},
-				},
-				options: [ //todo: add embedder update
-					{
-						name: 'Create',
-						value: 'create',
-						description: 'Create an embedder for use in Goodmem',
-					},
-					{
-						name: 'Delete',
-						value: 'delete',
-						description: 'Delete an existing embedder in Goodmem'
-					},
-					{
-						name: 'Get',
-						value: 'get',
-						description: 'Get an embedder by its id in Goodmem'
-					},
-					{
-						name: 'List',
-						value: 'list',
-						description: 'List an embedder by its id in Goodmem'
-					},
-				],
-				default: 'create',
-			},
-			/*
-			 * ============================================
-			 *            RERANKER OPERATIONS
-			 * ============================================
-			 */
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['reranker'],
-					},
-				},
-				options: [ //todo: add reranker update
-					{
-						name: 'Create',
-						value: 'create',
-						description: 'Create a reranker for use in Goodmem',
-					},
-					{
-						name: 'Delete',
-						value: 'delete',
-						description: 'Delete an existing reranker in Goodmem'
-					},
-					{
-						name: 'Get',
-						value: 'get',
-						description: 'Get a reranker by its id in Goodmem'
-					},
-					{
-						name: 'List',
-						value: 'list',
-						description: 'List a reranker by its id in Goodmem'
-					},
-				],
-				default: 'create',
-			},
-
-			/*
-			 * ============================================
-			 *            API KEY OPERATIONS
-			 * ============================================
-			 */
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['apikey'],
-					},
-				},
-				options: [ //todo: add apikey update
-					{
-						name: 'Create',
-						value: 'create',
-						description: 'Create an apikey for use in Goodmem',
-					},
-					{
-						name: 'Delete',
-						value: 'delete',
-						description: 'Delete an existing apikey in Goodmem'
-					},
-					{
-						name: 'List',
-						value: 'list',
-						description: 'List an apikey by its id in Goodmem'
-					},
-				],
-				default: 'create',
-			},
-
-			/*
-			 * ============================================
 			 *            SPACE FIELDS
 			 * ============================================
 			 */
@@ -324,10 +156,10 @@ export class Goodmem implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						resource: ['space', 'memory'],
+						resource: ['space'],
 					},
 					hide: {
-						operation: ['create', 'list', 'retrieve'],
+						operation: ['create'],
 					},
 				},
 				placeholder: '',
@@ -342,7 +174,7 @@ export class Goodmem implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['space'],
-						operation: ['create', 'retrieve'],
+						operation: ['create'],
 					},
 				},
 				placeholder: '',
@@ -357,7 +189,7 @@ export class Goodmem implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['space'],
-						operation: ['create', 'list'],
+						operation: ['create'],
 					},
 				},
 				placeholder: '',
@@ -411,7 +243,7 @@ export class Goodmem implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['space'],
-						operation: ['create', 'list'],
+						operation: ['create'],
 					},
 				},
 				placeholder: '',
@@ -427,7 +259,7 @@ export class Goodmem implements INodeType {
 				displayOptions: {
 					show: {
 						resource: ['space'],
-						operation: ['create', 'list'],
+						operation: ['create'],
 					},
 				},
 				description: '(Optional) Space Labels',
@@ -481,7 +313,7 @@ export class Goodmem implements INodeType {
 				],
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 					},
 				},
@@ -496,7 +328,7 @@ export class Goodmem implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						optionalChunkingStrategy: ['other'],
 					},
@@ -521,7 +353,7 @@ export class Goodmem implements INodeType {
 				],
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						optionalChunkingStrategy: ['recursive', 'sentence']
 					},
@@ -539,7 +371,7 @@ export class Goodmem implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['recursive']
@@ -560,7 +392,7 @@ export class Goodmem implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['sentence']
@@ -581,7 +413,7 @@ export class Goodmem implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['sentence']
@@ -602,7 +434,7 @@ export class Goodmem implements INodeType {
 				required: true,
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['recursive']
@@ -628,7 +460,7 @@ export class Goodmem implements INodeType {
 				],
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['recursive']
@@ -652,7 +484,7 @@ export class Goodmem implements INodeType {
 				],
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['recursive']
@@ -673,10 +505,11 @@ export class Goodmem implements INodeType {
 				required: false,
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						optionalChunkingStrategy: ['recursive'],
 						chunkingOptionToggle: ['custom'],
+						chunkingSeparatorOptionToggle: ['custom']
 					},
 				},
 				placeholder: 'Enter chunking separator',
@@ -704,7 +537,7 @@ export class Goodmem implements INodeType {
 				],
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 						optionalChunkingStrategy: ['recursive'],
@@ -733,7 +566,7 @@ export class Goodmem implements INodeType {
 				],
 				displayOptions: {
 					show: {
-						resource: ['space'],
+						resource: ['space', 'memory'],
 						operation: ['create'],
 						chunkingOptionToggle: ['custom'],
 					},
@@ -746,6 +579,23 @@ export class Goodmem implements INodeType {
 			 *            MEMORY FIELDS
 			 * ============================================
 			 */
+			{
+				displayName: 'Space ID',
+				name: 'requiredSpaceIdForMemory',
+				type: 'string',
+				default: '',
+				required: true,
+				displayOptions: {
+					show: {
+						resource: ['memory'],
+					},
+					hide: {
+						operation: ['retrieve'],
+					},
+				},
+				placeholder: '',
+				description: '(Required) Space ID',
+			},
 			{
 				displayName: 'Memory Id',
 				name: 'memoryIdRequired',
@@ -776,149 +626,17 @@ export class Goodmem implements INodeType {
 				placeholder: '',
 				description: '(Optional) Memory ID',
 			},
-
-			/*
-			 * ============================================
-			 *            RERANKER FIELDS
-			 * ============================================
-			 */
 			{
-				displayName: 'Reranker Id',
-				name: 'rerankerIdRequired',
+				displayName: 'Content type',
+				name: 'contentTypeForMemory',
 				type: 'string',
-				default: '',
-				required: true,
+				default: 'text/plain',
 				displayOptions: {
 					show: {
-						resource: ['reranker'],
-						operation: ['delete', 'get'],
-					},
-				},
-				placeholder: '',
-				description: '(Required) Reranker ID',
-			},
-			{
-				displayName: 'Reranker Id',
-				name: 'rerankerIdOptional',
-				type: 'string',
-				default: '',
-				required: false,
-				displayOptions: {
-					show: {
-						resource: ['reranker'],
+						resource: ['memory'],
 						operation: ['create'],
 					},
 				},
-				placeholder: '',
-				description: '(Optional) Reranker ID',
-			},
-
-			/*
-			 * ============================================
-			 *            LLM FIELDS
-			 * ============================================
-			 */
-			{
-				displayName: 'Llm Id',
-				name: 'llmIdRequired',
-				type: 'string',
-				default: '',
-				required: true,
-				displayOptions: {
-					show: {
-						resource: ['llm'],
-						operation: ['delete', 'get'],
-					},
-				},
-				placeholder: '',
-				description: '(Required) Llm ID',
-			},
-			{
-				displayName: 'Memory Id',
-				name: 'llmIdOptional',
-				type: 'string',
-				default: '',
-				required: false,
-				displayOptions: {
-					show: {
-						resource: ['llm'],
-						operation: ['create'],
-					},
-				},
-				placeholder: '',
-				description: '(Optional) Llm ID',
-			},
-
-			/*
-			 * ============================================
-			 *            EMBEDDER FIELDS
-			 * ============================================
-			 */
-			{
-				displayName: 'Embedder Id',
-				name: 'embedderIdRequired',
-				type: 'string',
-				default: '',
-				required: true,
-				displayOptions: {
-					show: {
-						resource: ['embedder'],
-						operation: ['delete', 'get'],
-					},
-				},
-				placeholder: '',
-				description: '(Required) Embedder ID',
-			},
-			{
-				displayName: 'Embedder Id',
-				name: 'embedderIdOptional',
-				type: 'string',
-				default: '',
-				required: false,
-				displayOptions: {
-					show: {
-						resource: ['embedder'],
-						operation: ['create'],
-					},
-				},
-				placeholder: '',
-				description: '(Optional) Embedder ID',
-			},
-
-			/*
-			 * ============================================
-			 *            API KEY FIELDS
-			 * ============================================
-			 */
-			{
-				displayName: 'Api Key Id',
-				name: 'apiKeyIdRequired',
-				type: 'string',
-				default: '',
-				required: true,
-				displayOptions: {
-					show: {
-						resource: ['apikey'],
-						operation: ['delete'],
-					},
-				},
-				placeholder: '',
-				description: '(Required) Api Key ID',
-			},
-			{
-				displayName: 'Api Key Id',
-				name: 'apiKeyIdOptional',
-				type: 'string',
-				default: '',
-				required: false,
-				displayOptions: {
-					show: {
-						resource: ['apikey'],
-						operation: ['create'],
-					},
-				},
-				placeholder: '',
-				description: '(Optional) Api Key ID',
 			},
 			// ...issueDescription,
 			// ...issueCommentDescription,
