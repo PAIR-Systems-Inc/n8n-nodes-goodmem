@@ -26,7 +26,7 @@ class GoodmemApi {
             type: 'generic',
             properties: {
                 headers: {
-                    'x-api-key': '{{$credentials?.goodmemApiKey}}',
+                    'x-api-key': '={{$credentials?.goodmemApiKey}}',
                 },
             },
         };
@@ -35,6 +35,9 @@ class GoodmemApi {
                 baseURL: '={{$credentials.server.replace(new RegExp("/$"), "") + "/v1" }}',
                 url: '/spaces',
                 method: 'GET',
+                headers: {
+                    'x-api-key': '={{$credentials?.goodmemApiKey}}',
+                },
             },
         };
     }
