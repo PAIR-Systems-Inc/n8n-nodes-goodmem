@@ -160,18 +160,6 @@ export class Goodmem implements INodeType {
 						},
 					},
 					{
-						name: 'Get',
-						value: 'get',
-						description: 'Get a memory by its id in Goodmem',
-						action: 'Get a memory',
-						routing: {
-							request: {
-								method: 'GET',
-								url: '=/memories/{{$parameter.memoryIdRequired}}',
-							},
-						},
-					},
-					{
 						name: 'Download Content',
 						value: 'downloadContent',
 						description: 'Download the original content of a memory',
@@ -180,6 +168,18 @@ export class Goodmem implements INodeType {
 							request: {
 								method: 'GET',
 								url: '=/memories/{{$parameter.memoryIdRequired}}/content',
+							},
+						},
+					},
+					{
+						name: 'Get',
+						value: 'get',
+						description: 'Get a memory by its ID in Goodmem',
+						action: 'Get a memory',
+						routing: {
+							request: {
+								method: 'GET',
+								url: '=/memories/{{$parameter.memoryIdRequired}}',
 							},
 						},
 					},
@@ -219,14 +219,13 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Required) Space ID',
+				description: 'The Space ID to operate on',
 			},
 			{
 				displayName: 'Space ID',
 				name: 'optionalSpaceId',
 				type: 'string',
 				default: '',
-				required: false,
 				displayOptions: {
 					show: {
 						resource: ['space'],
@@ -234,7 +233,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Optional) Client-provided UUID for idempotent creation',
+				description: 'Client-provided UUID for idempotent creation',
 				routing: {
 					send: {
 						type: 'body',
@@ -255,7 +254,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Required) Space Name',
+				description: 'Name for the new space',
 				routing: {
 					send: {
 						type: 'body',
@@ -276,7 +275,7 @@ export class Goodmem implements INodeType {
 						operation: ['create'],
 					},
 				},
-				description: '(Required) Embedder configurations',
+				description: 'Embedder configurations for the space',
 				options: [
 				{
 					displayName: 'Embedder',
@@ -314,7 +313,6 @@ export class Goodmem implements INodeType {
 				name: 'optionalSpaceOwner',
 				type: 'string',
 				default: '',
-				required: false,
 				displayOptions: {
 					show: {
 						resource: ['space'],
@@ -322,7 +320,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Optional) Owner identifier. Requires CREATE_SPACE_ANY permission if specified',
+				description: 'Owner identifier. Requires CREATE_SPACE_ANY permission if specified.',
 				routing: {
 					send: {
 						type: 'body',
@@ -343,7 +341,7 @@ export class Goodmem implements INodeType {
 						operation: ['create'],
 					},
 				},
-				description: '(Optional) Key-value pairs for categorizing the space (max 20)',
+				description: 'Key-value pairs for categorizing the space (max 20)',
 				options: [
 				{
 					displayName: 'Label',
@@ -382,7 +380,7 @@ export class Goodmem implements INodeType {
 			 * ============================================
 			 */
 			{
-				displayName: 'Space ID (UUID Format Required)',
+				displayName: 'Space ID',
 				name: 'requiredSpaceIdForMemory',
 				type: 'string',
 				default: '',
@@ -394,7 +392,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Required) Space ID where the memory will be stored',
+				description: 'Space ID where the memory will be stored (UUID format)',
 				routing: {
 					send: {
 						type: 'body',
@@ -403,7 +401,7 @@ export class Goodmem implements INodeType {
 				},
 			},
 			{
-				displayName: 'Memory Id (UUID Format Required)',
+				displayName: 'Memory ID',
 				name: 'memoryIdRequired',
 				type: 'string',
 				default: '',
@@ -415,7 +413,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Required) Memory ID (UUID Format Required)',
+				description: 'The Memory ID to operate on (UUID format)',
 			},
 			{
 				displayName: 'Include Content',
@@ -456,11 +454,10 @@ export class Goodmem implements INodeType {
 				},
 			},
 			{
-				displayName: 'Memory Id',
+				displayName: 'Memory ID',
 				name: 'memoryIdOptional',
 				type: 'string',
 				default: '',
-				required: false,
 				displayOptions: {
 					show: {
 						resource: ['memory'],
@@ -468,7 +465,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Optional) Client-provided UUID for idempotent creation',
+				description: 'Client-provided UUID for idempotent creation',
 				routing: {
 					send: {
 						type: 'body',
@@ -511,7 +508,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: 'Enter the text content for this memory',
-				description: '(Required) The text content to store as a memory',
+				description: 'The text content to store as a memory',
 				routing: {
 					send: {
 						type: 'body',
@@ -554,7 +551,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: '',
-				description: '(Optional) Chunking Strategy',
+				description: 'Strategy for splitting content into chunks',
 				routing: {
 					send: {
 						type: 'body',
@@ -736,7 +733,6 @@ export class Goodmem implements INodeType {
 					numberStep: 1,
 				},
 				default: 64,
-				required: false,
 				displayOptions: {
 					show: {
 						resource: ['space', 'memory'],
@@ -807,7 +803,6 @@ export class Goodmem implements INodeType {
 					' ',
 					''
 				],
-				required: false,
 				displayOptions: {
 					show: {
 						resource: ['space', 'memory'],
@@ -865,7 +860,7 @@ export class Goodmem implements INodeType {
 						value: 'chars'
 					},
 					{
-						name: 'tokens',
+						name: 'Tokens',
 						value: 'tokens'
 					},
 				],
@@ -893,7 +888,7 @@ export class Goodmem implements INodeType {
 						operation: ['create'],
 					},
 				},
-				description: '(Optional) Key-value pairs for memory metadata',
+				description: 'Key-value pairs for memory metadata',
 				options: [
 				{
 					displayName: 'Metadata',
@@ -947,7 +942,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: 'Enter your search query',
-				description: '(Required) Primary query/message for semantic search',
+				description: 'Primary query/message for semantic search',
 				routing: {
 					send: {
 						type: 'query',
@@ -971,7 +966,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: 'Enter Space UUID',
-				description: '(Optional) Space UUIDs to search within',
+				description: 'Space UUIDs to search within',
 				routing: {
 					send: {
 						type: 'query',
@@ -995,7 +990,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: "e.g. val('$.key1') = 'value1'",
-				description: '(Optional) Filter expression applied to every space ID supplied',
+				description: 'Filter expression applied to every space ID supplied',
 				routing: {
 					send: {
 						type: 'query',
@@ -1018,7 +1013,7 @@ export class Goodmem implements INodeType {
 						operation: ['retrieve'],
 					},
 				},
-				description: '(Optional) Maximum number of memories to retrieve',
+				description: 'Maximum number of memories to retrieve',
 				routing: {
 					send: {
 						type: 'query',
@@ -1076,19 +1071,18 @@ export class Goodmem implements INodeType {
 						operation: ['retrieve'],
 					},
 				},
-				description: '(Optional) Configure ChatPostProcessor for reranking and LLM generation',
+				description: 'Configure ChatPostProcessor for reranking and LLM generation',
 				options: [
 					{
-						displayName: 'Reranker ID',
-						name: 'postProcessorRerankerId',
-						type: 'string',
-						default: '',
-						placeholder: 'UUID of reranker',
-						description: 'UUID of reranker for ChatPostProcessor (enables post-processing)',
+						displayName: 'Chronological Resort',
+						name: 'postProcessorChronologicalResort',
+						type: 'boolean',
+						default: true,
+						description: 'Whether to resort results by creation time (default: true)',
 						routing: {
 							send: {
 								type: 'query',
-								property: 'postProcessorRerankerId',
+								property: 'postProcessorChronologicalResort',
 							},
 						},
 					},
@@ -1103,24 +1097,6 @@ export class Goodmem implements INodeType {
 							send: {
 								type: 'query',
 								property: 'postProcessorLlmId',
-							},
-						},
-					},
-					{
-						displayName: 'Relevance Threshold',
-						name: 'postProcessorRelevanceThreshold',
-						type: 'number',
-						typeOptions: {
-							minValue: 0,
-							maxValue: 1,
-							numberPrecision: 2,
-						},
-						default: 0.5,
-						description: 'Minimum relevance score for ChatPostProcessor (default: 0.5)',
-						routing: {
-							send: {
-								type: 'query',
-								property: 'postProcessorRelevanceThreshold',
 							},
 						},
 					},
@@ -1159,15 +1135,34 @@ export class Goodmem implements INodeType {
 						},
 					},
 					{
-						displayName: 'Chronological Resort',
-						name: 'postProcessorChronologicalResort',
-						type: 'boolean',
-						default: true,
-						description: 'Whether to resort results by creation time (default: true)',
+						displayName: 'Relevance Threshold',
+						name: 'postProcessorRelevanceThreshold',
+						type: 'number',
+						typeOptions: {
+							minValue: 0,
+							maxValue: 1,
+							numberPrecision: 2,
+						},
+						default: 0.5,
+						description: 'Minimum relevance score for ChatPostProcessor (default: 0.5)',
 						routing: {
 							send: {
 								type: 'query',
-								property: 'postProcessorChronologicalResort',
+								property: 'postProcessorRelevanceThreshold',
+							},
+						},
+					},
+					{
+						displayName: 'Reranker ID',
+						name: 'postProcessorRerankerId',
+						type: 'string',
+						default: '',
+						placeholder: 'UUID of reranker',
+						description: 'UUID of reranker for ChatPostProcessor (enables post-processing)',
+						routing: {
+							send: {
+								type: 'query',
+								property: 'postProcessorRerankerId',
 							},
 						},
 					},
