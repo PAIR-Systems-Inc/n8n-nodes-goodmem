@@ -36,7 +36,7 @@ export class GoodmemApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				'x-api-key': '{{$credentials?.goodmemApiKey}}',
+				'x-api-key': '={{$credentials?.goodmemApiKey}}',
 			},
 		},
 	};
@@ -46,6 +46,9 @@ export class GoodmemApi implements ICredentialType {
 			baseURL: '={{$credentials.server.replace(new RegExp("/$"), "") + "/v1" }}',
 			url: '/spaces',
 			method: 'GET',
+			headers: {
+				'x-api-key': '={{$credentials?.goodmemApiKey}}',
+			},
 		},
 	};
 }
