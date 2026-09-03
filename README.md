@@ -44,13 +44,13 @@ Visit https://goodmem.ai/quick-start for more instructions. Consider using the R
 1. Open your n8n instance
 2. Go to **Settings** > **Community Nodes**
 3. Select **Install**
-4. Enter `n8n-nodes-goodmem` and click **Install**
+4. Enter `@pairsystems/n8n-nodes-goodmem` and click **Install**
 
 ### Manual Installation
 
 ```bash
 cd ~/.n8n/nodes
-npm install n8n-nodes-goodmem
+npm install @pairsystems/n8n-nodes-goodmem
 ```
 
 Then restart your n8n instance.
@@ -183,7 +183,7 @@ npm run build
 
 ```bash
 npm run lint
-npm run lintfix
+npm run lint:fix
 ```
 
 ### Local Testing
@@ -193,7 +193,7 @@ Link the node to your local n8n installation:
 ```bash
 npm link
 cd ~/.n8n/nodes
-npm link n8n-nodes-goodmem
+npm link @pairsystems/n8n-nodes-goodmem
 ```
 
 ## Compatibility

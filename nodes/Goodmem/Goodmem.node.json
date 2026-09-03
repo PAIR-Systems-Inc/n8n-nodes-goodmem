@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-goodmem",
+	"node": "@pairsystems/n8n-nodes-goodmem.goodmem",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Data & Storage"],
