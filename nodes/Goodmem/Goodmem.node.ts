@@ -269,13 +269,14 @@ export class Goodmem implements INodeType {
 				typeOptions: { multipleValues: true },
 				placeholder: 'Add Embedder',
 				default: {},
+				required: true,
 				displayOptions: {
 					show: {
 						resource: ['space'],
 						operation: ['create'],
 					},
 				},
-				description: 'Embedder configurations for the space',
+				description: 'Embedder configurations for the space. At least one is required.',
 				options: [
 				{
 					displayName: 'Embedder',
@@ -570,17 +571,42 @@ export class Goodmem implements INodeType {
 									return { none: {} };
 								}
 
+								// Map UI values to API enum values
+								const lengthMap = { chars: 'CHARACTER_COUNT', tokens: 'TOKEN_COUNT' };
+								const keepMap = { end: 'KEEP_END', start: 'KEEP_START', none: 'KEEP_NONE' };
+
 								// Check if using default or custom options
 							// Use defaults if toggle is undefined, null, empty, or explicitly 'default'
 								const toggle = $parameter.chunkingOptionToggle;
 								if (!toggle || toggle === 'default') {
-									// Don't send any config - let server use its defaults
-									return undefined;
-								}
+									// A memory with no chunkingConfig inherits its space's default, so
+									// omitting the field is correct there. A space cannot omit it:
+									// POST /v1/spaces rejects a missing defaultChunkingConfig, and an
+									// empty strategy object is stored verbatim as chunkSize 0 rather
+									// than being filled in. So send the documented defaults explicitly.
+									if ($parameter.resource !== 'space') {
+										return undefined;
+									}
 
-								// Map UI values to API enum values
-								const lengthMap = { chars: 'CHARACTER_COUNT', tokens: 'TOKEN_COUNT' };
-								const keepMap = { end: 'KEEP_END', start: 'KEEP_START', none: 'NONE' };
+									if (strategy === 'sentence') {
+										return {
+											sentence: {
+												maxChunkSize: 4000,
+												minChunkSize: 100,
+												lengthMeasurement: 'CHARACTER_COUNT',
+											}
+										};
+									}
+
+									return {
+										recursive: {
+											chunkSize: 512,
+											chunkOverlap: 64,
+											keepStrategy: 'KEEP_END',
+											lengthMeasurement: 'CHARACTER_COUNT',
+										}
+									};
+								}
 
 								// Build custom config based on strategy
 								if (strategy === 'recursive') {
@@ -959,6 +985,7 @@ export class Goodmem implements INodeType {
 					multipleValueButtonText: 'Add Space ID',
 				},
 				default: [],
+				required: true,
 				displayOptions: {
 					show: {
 						resource: ['memory'],
@@ -966,7 +993,7 @@ export class Goodmem implements INodeType {
 					},
 				},
 				placeholder: 'Enter Space UUID',
-				description: 'Space UUIDs to search within',
+				description: 'Space UUIDs to search within. At least one is required.',
 				routing: {
 					send: {
 						type: 'query',
