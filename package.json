@@ -1,6 +1,6 @@
 {
     "name": "@pairsystems/n8n-nodes-goodmem",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "n8n community node for Goodmem semantic memory API",
     "license": "MIT",
     "homepage": "https://github.com/PAIR-Systems-Inc/n8n-nodes-goodmem#readme",
